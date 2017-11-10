@@ -3,12 +3,21 @@ language: go
 go:
 - master
 
-script: go build
+before_install:
+  - go get github.com/mitchellh/gox
+
+script:
+ - go build
+# - gox -os="linux" -arch="amd64" -output="logshare.." -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
 
 deploy:
-  provider: release
-  api_key: "$githubtoken"
-  file: "$TRAVIS_BUILD_DIR/travis-test"
+  provider: releases
   skip_cleanup: true
+  api_key: "$githubtoken"
+  file:
+  - travis-test
   on:
-    tags: true  
+    repo: cloudflare/logshare
+    tags: true
+    condition: $LATEST = true
+

@@ -7,6 +7,8 @@ before_install:
   - go get github.com/mitchellh/gox
 
 script:
+ - "echo $githubtoken"
+ - "echo {{githubtoken}}"
  - go build
 # - gox -os="linux" -arch="amd64" -output="logshare.." -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
 

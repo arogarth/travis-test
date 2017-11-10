@@ -8,5 +8,5 @@ script: go build
 deploy:
   provider: release
   api_key: "$githubtoken"
-  file: "$TRAVIS_BUILD_DIR/bin/"
+  file: "$TRAVIS_BUILD_DIR/travis-test"
   skip_cleanup: true

@@ -4,3 +4,9 @@ go:
 - master
 
 script: go build
+
+deploy:
+  provider: release
+  api_key: "$githubtoken"
+  file: "$TRAVIS_BUILD_DIR/bin/"
+  skip_cleanup: true

@@ -9,6 +9,7 @@ before_install:
 script:
 #  - go build
   - gox -os="linux" -arch="amd64" -output="travis-test.."  -verbose ./
+  - ls -l
   
 deploy:
   provider: releases

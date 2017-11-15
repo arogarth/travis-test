@@ -3,6 +3,10 @@ language: go
 go:
 - master
 
+branches:
+  only:
+  - /^\d+\.\d+\.\d+$/
+    
 before_install:
   - go get github.com/mitchellh/gox
  

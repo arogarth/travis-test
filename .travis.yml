@@ -8,7 +8,7 @@ before_install:
  
 script:
 #  - go build
-  - gox -os="linux" -arch="amd64" -output="travis-test.."  -verbose ./
+  - gox -os="linux" -arch="amd64" -verbose 
   - ls -l
   
 deploy:

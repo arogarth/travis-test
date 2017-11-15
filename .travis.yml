@@ -8,7 +8,7 @@ before_install:
  
 script:
 #  - go build
-  - gox -os="linux" -arch="amd64" -verbose 
+  - gox -os="linux,darwin,windows" -arch="amd64" -verbose 
   - ls -l
   
 deploy:
@@ -17,7 +17,7 @@ deploy:
   api_key:
     secure: "$githubtoken"
   file:
-  - travis-test
+  - travis-test*
   on:
     tags: true
 

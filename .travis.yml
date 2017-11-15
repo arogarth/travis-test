@@ -3,23 +3,16 @@ language: go
 go:
 - master
 
-before_install:
-  - go get github.com/mitchellh/gox
-
 script:
- - "echo $githubtoken"
- - "echo {{githubtoken}}"
  - go build
-# - gox -os="linux" -arch="amd64" -output="logshare.." -ldflags "-X main.Rev=`git rev-parse --short HEAD`" -verbose ./...; fi
-
+ 
 deploy:
   provider: releases
   skip_cleanup: true
-  api_key: "$githubtoken"
+  api_key:
+    secure: "$githubtoken"
   file:
   - travis-test
   on:
-    repo: cloudflare/logshare
     tags: true
-    condition: $LATEST = true
 

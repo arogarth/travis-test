@@ -3,9 +3,13 @@ language: go
 go:
 - master
 
-script:
- - go build
+before_install:
+  - go get github.com/mitchellh/gox
  
+script:
+#  - go build
+  - gox -os="linux" -arch="amd64" -output="travis-test.."  -verbose ./
+  
 deploy:
   provider: releases
   skip_cleanup: true
